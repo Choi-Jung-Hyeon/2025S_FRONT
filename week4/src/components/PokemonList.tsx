@@ -1,6 +1,5 @@
 import Item from './PokemonItem';
 import Data from '../data';
-import { usestore } from '../Pokemonstore';
 
 interface Pokemon {
     id: string;
@@ -21,22 +20,18 @@ interface Pokemon {
 
 
 export default function PokemonList() {
-    const setid = usestore((state:any) => state.setselectedpokemonid)
     return (
-        <div>            
-            <div className="container">
-                {Data.map((pokemon:Pokemon) => (
-                    <Item 
-                        id={pokemon.id}
-                        image={pokemon.img}
-                        name={pokemon.name}
-                        height={pokemon.height}
-                        weight={pokemon.weight}
-                        types={pokemon.types}
-                        onClick={() => setid(pokemon.id)}
-                    />
-                ))}
-            </div>
+        <div className="container">
+            {Data.map((pokemon:Pokemon) => (
+                <Item 
+                    id={pokemon.id}
+                    image={pokemon.img}
+                    name={pokemon.name}
+                    height={pokemon.height}
+                    weight={pokemon.weight}
+                    types={pokemon.types}
+                />
+            ))}
         </div>
     );
 }

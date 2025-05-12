@@ -1,17 +1,22 @@
 import './App.css';
+import './reset.css';
 import Detail from './components/PokemonDetail';
 import List from './components/PokemonList';
-import Title from './components/PokemonTitle';
-import { usestore } from './Pokemonstore';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 
 function App() {
-  const setid = usestore((state:any) => state.setselectedpokemonid)
-  const getid = usestore((state:any) => state.id)
   return (
-    <div className="App">
-      <Title onClick={() => setid('-1')}/>
-      { getid === '-1' ? <List /> : <Detail id={getid}/>}
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<List />}>
+          </Route>
+          <Route path="/detail/:id" element={<Detail />}>
+          </Route>
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

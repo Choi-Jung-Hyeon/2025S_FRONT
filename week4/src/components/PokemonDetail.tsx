@@ -1,4 +1,5 @@
 import Data from '../data';
+import { useParams } from 'react-router-dom';
 
 interface Pokemon {
     id: string;
@@ -17,8 +18,9 @@ interface Pokemon {
     img: string; 
   }
 
-export default function PokemonDetail(props:any) {
-    const pokemon = Data.find((p:Pokemon) => p.id === props.id);
+export default function PokemonDetail() {
+    const {id}= useParams();
+    const pokemon = Data.find((p:Pokemon) => p.id === id);
     if(pokemon){
         return (
             <div className='container2'>
